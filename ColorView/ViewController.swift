@@ -19,8 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet var greenValueLabel: UILabel!
     @IBOutlet var blueValueLabel: UILabel!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,20 +27,28 @@ class ViewController: UIViewController {
         redSlider.value = 0.3
         greenSlider.value = 0.6
         blueSlider.value = 0.9
+        
+        backgraundColor()
     }
-
-    @IBAction func sliderValue(_ sender: UISlider) {
     
+    func numberOfCharacters() {
         redValueLabel.text = String(format: "%.2f", redSlider.value)
         greenValueLabel.text = String(format: "%.2f", greenSlider.value)
         blueValueLabel.text = String(format: "%.2f", blueSlider.value)
-        
+    }
+    
+    func backgraundColor() {
         let backgraundColor = UIColor(red: CGFloat(redSlider.value),
                                       green: CGFloat(greenSlider.value),
                                       blue: CGFloat(blueSlider.value),
                                       alpha: 1.0)
         
         colorView.backgroundColor = backgraundColor
+    }
+
+    @IBAction func sliderValue(_ sender: UISlider) {
+        backgraundColor()
+        numberOfCharacters()
     }
 }
 
